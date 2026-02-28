@@ -9,8 +9,6 @@ class Project(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     title: str = Field(index=True)
     description: str
-    short_summary: str
-    technologies: str
     github_link: Optional[str] = None
     image_path: Optional[str] = None
 
