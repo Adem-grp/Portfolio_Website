@@ -1,5 +1,4 @@
-from markdown_it.rules_inline import link_pairs
-from sqlmodel import SQLModel, Relationship
+from sqlmodel import SQLModel
 from typing import Optional, List
 
 

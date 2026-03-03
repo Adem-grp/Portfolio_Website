@@ -3,7 +3,7 @@ from typing import Optional,List, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from social import Social
+    from backend.models.social import Social
 
 class Profile(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
