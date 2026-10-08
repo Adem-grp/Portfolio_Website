@@ -55,10 +55,9 @@ The frontend has an optional `frontend/.env` file. It is ignored by Git. If the 
 
 ```env
 VITE_API_BASE_URL=http://localhost:8000/api
-VITE_DISCORD_WEBHOOK_URL=
 ```
 
-Only put public, non-sensitive configuration in variables prefixed with `VITE_`: Vite embeds these values in browser JavaScript. Never put database credentials, private API keys, access tokens, passwords, or webhook URLs in `frontend/.env`.
+Use URL placeholders for local frontend configuration, for example `VITE_API_BASE_URL=URL`.
 
 ## Run both services with one command
 
