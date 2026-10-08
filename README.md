@@ -54,7 +54,7 @@ npm run lint     # Run ESLint
 The frontend has an optional `frontend/.env` file. It is ignored by Git. If the legacy API-driven components are used, set local values such as:
 
 ```env
-VITE_API_BASE_URL=http://localhost:8000/api
+VITE_API_BASE_URL=URL
 ```
 
 Use URL placeholders for local frontend configuration, for example `VITE_API_BASE_URL=URL`.

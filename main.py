@@ -27,7 +27,6 @@ BACKEND_PYTHON = (
 
 
 def command_exists(command: str) -> bool:
-    """Return whether a command is available on the current PATH."""
     try:
         subprocess.run(
             [command, "--version"],
@@ -41,7 +40,6 @@ def command_exists(command: str) -> bool:
 
 
 def frontend_command() -> list[str]:
-    """Use the platform-appropriate npm executable."""
     npm = "npm.cmd" if os.name == "nt" else "npm"
     return [npm, "run", "dev", "--", "--host", "localhost"]
 
@@ -59,11 +57,7 @@ def terminate_process(process: subprocess.Popen[object], name: str) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the portfolio development services.")
-    parser.add_argument(
-        "--backend-only",
-        action="store_true",
-        help="Run only the FastAPI backend.",
-    )
+    parser.add_argument("--backend-only", action="store_true", help="Run only the FastAPI backend.")
     return parser.parse_args()
 
 
@@ -99,6 +93,7 @@ def main() -> int:
         print("Backend API: http://localhost:8000/docs", flush=True)
         if frontend is not None:
             print("Portfolio UI: http://localhost:5173", flush=True)
+
         return_code = 0
         while True:
             if backend.poll() is not None:
