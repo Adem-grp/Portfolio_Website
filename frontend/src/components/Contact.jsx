@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -9,19 +8,12 @@ const Contact = () => {
     e.preventDefault();
     setStatus('sending');
 
-    // This is where you'll eventually put your Discord Webhook URL
-    const DISCORD_WEBHOOK_URL = import.meta.env.VITE_DISCORD_WEBHOOK_URL;
-
-    try {
-      await axios.post(DISCORD_WEBHOOK_URL, {
-        content: `**New Portfolio Message!**\n**Name:** ${formData.name}\n**Email:** ${formData.email}\n**Message:** ${formData.message}`
-      });
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-    }
+    const subject = encodeURIComponent(`Portfolio message from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    );
+    window.location.href = `mailto:ademgarip2001@gmail.com?subject=${subject}&body=${body}`;
+    setStatus('success');
   };
 
   return (
@@ -45,7 +37,7 @@ const Contact = () => {
             value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})}
           ></textarea>
           <button type="submit" className="w-full bg-yellow-500 text-black font-black py-4 rounded-xl uppercase hover:bg-yellow-400 transition-all">
-            {status === 'sending' ? 'Sending...' : 'Send to Discord'}
+            {status === 'sending' ? 'Opening email...' : 'Send message'}
           </button>
           {status === 'success' && <p className="text-green-500 text-center font-bold">Message sent successfully!</p>}
         </form>

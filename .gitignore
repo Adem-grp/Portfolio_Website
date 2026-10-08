@@ -1,0 +1,19 @@
+# Environment and secret files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Frontend
+node_modules/
+dist/
+
+# IDE and local tooling
+.idea/
+.vscode/
+*.local
