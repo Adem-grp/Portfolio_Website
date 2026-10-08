@@ -12,3 +12,5 @@ class ProfileBase(SQLModel):
 class ProfileRead(ProfileBase):
     id: int
     socials: List[SocialRead] = []
+
+
